@@ -20,7 +20,7 @@ export const contentList: ContentList[] = [
     gap: true,
     children1: (
       <MainPageContentText data-tag="h3" data-text="right">
-        <h3>Hello! I'm Front-End Developer</h3>
+        <h3>Hello! Im Front-End Developer</h3>
       </MainPageContentText>
     ),
     children2: (
@@ -33,7 +33,7 @@ export const contentList: ContentList[] = [
     gap: true,
     children1: (
       <MainPageContentText data-tag="h3" data-text="left">
-        <h3>I'm interested in programming and everything connected with it.</h3>
+        <h3>Im interested in programming and everything connected with it.</h3>
       </MainPageContentText>
     ),
     children2: <MainPageContentMedia data-media="left" />,
