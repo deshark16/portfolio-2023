@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { loading } from "./keyframes";
+import { media } from "shared/util/media";
 
 const soundUrl = new URL("../../assets/logo/sound.jpg", import.meta.url);
 
@@ -10,16 +11,21 @@ type MainPageSoundProps = {
 
 export const MainPageSound = styled.div<MainPageSoundProps>`
   position: fixed;
-  bottom: 7vh;
+  bottom: 2rem;
   width: 30px;
-  left: 7vw;
+  left: 2rem;
   cursor: ${({$loading}) => $loading ? "default" : "pointer"};
   height: 30px;
   transition: all 0.5s ease;
   background: ${({$loading}) => $loading ? `none` : `url(${soundUrl.href}) center no-repeat`};
   background-size: cover;
-  
-  & div {
+  padding: 0 0 0 10px;
+
+  ${media.tablet} {
+    left: 1.5rem;
+  }
+
+  div {
     text-align: center;
     display: flex;
     opacity: ${({$loading}) => $loading ? "1" : "0"};

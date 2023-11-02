@@ -1,9 +1,16 @@
+import { media } from "shared/util/media";
 import styled from "styled-components";
 
 export const MainPageContact = styled.div`
   position: fixed;
-  bottom: 7vh;
+  bottom: 2rem;
   display: flex;
-  flex-direction: column;
-  right: 7vw;
+  align-items: center;
+  right: 2rem;
+  gap: 1rem;
+  padding: 0 10px 0 0;
+
+  ${media.tablet} {
+    right: 1rem;
+  }
 `;
