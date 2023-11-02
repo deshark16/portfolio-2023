@@ -6,7 +6,7 @@ const Sound: FC = () => {
   const [loading, setLoading] = useState(true);
   const ambientRef = useRef<HTMLAudioElement>(null!);
   let progress = 57;
-
+  
   useEffect(() => {
     ambientRef.current = document.querySelector("[data-audio='ambient']")!;
     if (ambientRef.current.readyState !== 4) {
