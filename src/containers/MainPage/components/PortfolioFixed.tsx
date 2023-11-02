@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { MainPagePortfolioFixed } from "../shared/styled/StyledPortfolioFixed";
 import { MainPagePortfolioFixedBody } from "../shared/styled/StyledPortfolioFixed/body";
-import { portfolioFixedList } from "../contentList/portfolioFixedList";
 import { MainPagePortfolioFixedLink } from "../shared/styled/StyledPortfolioFixed/link";
+import { portfolioFixedList } from "../contentList/portfolioFixedList";
 
 const PortfolioFixed = memo(() => {
   return (
@@ -19,6 +19,7 @@ const PortfolioFixed = memo(() => {
     </MainPagePortfolioFixed>
   )
 })
+
 
 PortfolioFixed.displayName = "Portfolio Fixed"
 

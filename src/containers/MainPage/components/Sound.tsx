@@ -7,29 +7,33 @@ const audioUrl = new URL("../sounds/ambient.mp3", import.meta.url);
 const Sound: FC = () => {
   const [activeAudio, setActiveAudio] = useState(false);
   const [loading, setLoading] = useState(true);
-  const ambientRef = useRef<HTMLAudioElement>(null!);
   const [progress, setProgress] = useState(0);
+  const ambientRef = useRef<HTMLAudioElement>(null!);
 
-  useEffect(() => {
+  function handleProgress() {
     new Progress({
       fileUrl: audioUrl.href,
       setProgress,
+      bytesEnd: "64",
+      bytesStart: "0",
     });
+  }
+
+  function handleAudio() {
+    if (loading && progress !== 100) return;
+    setActiveAudio(!activeAudio);
+
+    !activeAudio ? ambientRef.current.play() : ambientRef.current.pause();
+  }
+
+  useEffect(() => {
+    handleProgress();
   }, []);
 
   useMemo(() => {
     if (progress !== 100) return;
     setLoading(false);
   }, [progress]);
-
-  function handleAudio() {
-    if (loading && progress !== 100) return;
-    setActiveAudio(!activeAudio);
-    
-    !activeAudio
-      ? ambientRef.current.play()
-      : ambientRef.current.pause();
-  }
 
   return (
     <>

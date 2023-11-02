@@ -13,10 +13,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": "./src",
     "paths": {
-      "components/*": ["./src/components/*"],
-      "shared/*": ["./src/shared/*"],
-      "pages/*": ["./src/pages/*"],
+      "components/*": ["components/*"],
+      "shared/*": ["shared/*"],
+      "pages/*": ["pages/*"],
+      "containers/*": ["containers/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
