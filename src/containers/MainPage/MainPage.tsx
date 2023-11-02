@@ -1,6 +1,5 @@
 import { memo } from "react";
 import Header from "./components/Header";
-import AudioPlayer from "./components/Audio";
 import Content from "./components/Content";
 import PortfolioFixed from "./components/PortfolioFixed";
 import Contact from "./components/Contact";
@@ -10,7 +9,6 @@ const MainPage = memo(() => {
   return (
     <>
       <Header />
-      <AudioPlayer />
       <Content />
       <PortfolioFixed />
       <Contact />

@@ -1,35 +1,51 @@
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useMemo, useRef, useState } from "react";
 import { MainPageSound } from "../shared/styled/StyledSound";
+import { Progress } from "../shared/utils/progress";
+
+const audioUrl = new URL("../sounds/ambient.mp3", import.meta.url);
 
 const Sound: FC = () => {
-  const [activeAudio, setActiveAudio] = useState(true);
+  const [activeAudio, setActiveAudio] = useState(false);
   const [loading, setLoading] = useState(true);
   const ambientRef = useRef<HTMLAudioElement>(null!);
-  let progress = 57;
-  
+  const [progress, setProgress] = useState(0);
+
   useEffect(() => {
-    ambientRef.current = document.querySelector("[data-audio='ambient']")!;
-    if (ambientRef.current.readyState !== 4) {
-      progress += 1;
-    }
+    new Progress({
+      fileUrl: audioUrl.href,
+      setProgress,
+    });
   }, []);
 
+  useMemo(() => {
+    if (progress !== 100) return;
+    setLoading(false);
+  }, [progress]);
+
   function handleAudio() {
-    if (loading) return;
-    ambientRef.current.muted ? ambientRef.current.play() : ambientRef.current.pause();
-    console.log(ambientRef.current);
+    if (loading && progress !== 100) return;
     setActiveAudio(!activeAudio);
+    
+    !activeAudio
+      ? ambientRef.current.play()
+      : ambientRef.current.pause();
   }
 
   return (
-    <MainPageSound
-      onClick={handleAudio}
-      $active={activeAudio}
-      $loading={loading}
-      data-button="audio"
-    >
-      <div>{progress}%</div>
-    </MainPageSound>
+    <>
+      <MainPageSound
+        onClick={handleAudio}
+        $active={activeAudio}
+        $loading={loading}
+        data-button="audio"
+      >
+        <div>{progress}%</div>
+      </MainPageSound>
+      <audio typeof="audio/mp3" src={audioUrl.href} ref={ambientRef}>
+        Your browser does not support the
+        <code>audio</code> element.
+      </audio>
+    </>
   );
 };
 

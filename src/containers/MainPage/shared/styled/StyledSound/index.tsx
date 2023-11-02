@@ -22,6 +22,7 @@ export const MainPageSound = styled.div<MainPageSoundProps>`
   & div {
     text-align: center;
     display: flex;
+    opacity: ${({$loading}) => $loading ? "1" : "0"};
     justify-content: center;
     align-items: center;
     min-height: 100%;
@@ -38,7 +39,7 @@ export const MainPageSound = styled.div<MainPageSoundProps>`
     height: 100%;
     opacity: ${({$loading}) => $loading ? "1" : "0"};
     border-top: solid 2px #000;
-    animation: ${loading} 1s linear infinite;
+    animation: ${loading} 1s linear ${({$loading}) => $loading ? "infinite" : "1"};
     transition: opacity .5s ease;
   }
 
